@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+	<head>
+		<meta charset="utf-8"/>
+		<meta name="viewport" content="width=device-width" />
+
+		<link rel="stylesheet" href="styles.css"/>
+		<link rel="stylesheet" href="slider.css"/>
+		<link rel="stylesheet" href="MarkerCluster.css"/>
+		<link rel="stylesheet" href="MarkerCluster.Default.css"/>
+
+		<script src="https://kit.fontawesome.com/cc6b63a8af.js" crossorigin="anonymous"></script>
+
+		<link href="https://fonts.googleapis.com/css?family=Sedgwick+Ave+Display" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Titillium+Web&display=swap" rel="stylesheet">
+		
+		<link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
+		integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+		crossorigin=""/>
+
+		<script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
+   integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
+   crossorigin="" defer></script>
+   		<script src="timer.js" defer></script>
+   		<script src="storage.js" defer></script>
+		<script src="form.js" defer></script>
+	    <script src="slider.js" defer></script>
+		<script src="leaflet.markercluster-src.js" defer></script>
+		<script src="map.js" defer></script>
+		<script src="booking.js" defer></script>
+		<script src="canvas.js" defer></script>
+		<script src="main.js" defer></script>
+		
+	
+			
+		<title>Cycloc - Réservation de vélos en location à Amiens</title>		
+		<link rel="icon" type="image/png" href="images/favicon.png"/>
+
+	</head>
+	
+	<body>
+
+	
+			
+		<header id="header">
+			<h1 id="h1-header"><span id="cycloc"> Cycloc </span> Réservation de vélos en location à Amiens</h1><br/>
+			<p>Bienvenue ! Découvrez comment fonctionne Cycloc dans le diaporama ci-dessous.</p>
+		</header>
+
+		<section id="diaporama">
+			<h2 class="w3c">Fonctionnement</h2>
+
+			<span id="sl_play" class="sl_command"></span>
+			<span id="sl_pause" class="sl_command"></span>
+
+
+			<figure id="sl_i1" class="sl_command sl_i">
+				<img src="images/image1.png" alt="" />
+				<figcaption>Trouvez votre station de location dans la carte de la ville de Créteil et cliquez dessus</figcaption>
+			</figure>
+			<figure id="sl_i2" class="sl_command sl_i">
+				<img src="images/image2.png" alt="" />
+				<figcaption>Trouvez un vélo disponible en vérifiant les informations de la station sélectionnée</figcaption>
+			</figure>
+			<figure id="sl_i3" class="sl_command sl_i">
+				<img src="images/image3.png" alt="" />
+				<figcaption>Réservez-le en renseignant vos nom et prénom et en cliquant sur le bouton "Réserver"</figcaption>
+			</figure>
+			<figure id="sl_i4" class="sl_command sl_i">
+				<img src="images/image4.png" alt="" />
+				<figcaption>Signez le formulaire dans la petite fenêtre pour valider la réservation</figcaption>
+			</figure>
+			<figure id="sl_i5" class="sl_command sl_i">
+				<img src="images/image5.png" alt="" />
+				<figcaption>Votre réservation est validée et valable 20 minutes </figcaption>
+			</figure>
+			<figure id="sl_i6" class="sl_command sl_i">
+				<img src="images/image6.png" alt="" />
+				<figcaption>Attention, vous ne pouvez réserver qu'un vélo à la fois</figcaption>
+			</figure>
+			
+			<div id="slideshow">
+			
+				<a class="play_commands pause" href="#sl_pause" title="Maintain paused">Pause</a>
+				<a class="play_commands play" href="#sl_play" title="Play the animation">Play</a>
+				<a id="prev1" class="commands prev commands1" href="#sl_i6" title="Aller à la dernière slide">&lt;</a>
+				<a id="next1" class="commands next commands1" href="#sl_i2" title="Aller à la 2ème slide">&gt;</a>
+				<a id="prev2" class="commands prev commands2" href="#sl_i1" title="Aller à la 1ère slide">&lt;</a>
+				<a id="next2" class="commands next commands2" href="#sl_i3" title="Aller à la 3ème slide">&gt;</a>
+				<a id="prev3" class="commands prev commands3" href="#sl_i2" title="Aller à la 2ème slide">&lt;</a>
+				<a id="next3" class="commands next commands3" href="#sl_i4" title="Aller à la 4ème slide">&gt;</a>
+				<a id="prev4" class="commands prev commands4" href="#sl_i3" title="Aller à la 3ème slide">&lt;</a>
+				<a id="next4" class="commands next commands4" href="#sl_i5" title="Aller à la 5ème slide">&gt;</a>
+				<a id="prev5" class="commands prev commands5" href="#sl_i4" title="Aller à la 4ème slide">&lt;</a>
+				<a id="next5" class="commands next commands5" href="#sl_i6" title="Aller à la 6ème slide">&gt;</a>
+				<a id="prev6" class="commands prev commands6" href="#sl_i5" title="Aller à la 5ème slide">&lt;</a>
+				<a id="next6" class="commands next commands6" href="#sl_i1" title="Aller à la 1ère slide">&gt;</a>
+				
+				<div id="slider-container" class="container">
+					<div class="c_slider"></div>
+					<div class="slider">
+						<figure>
+							<img src="images/image1.png" alt="" />
+							<figcaption>Trouvez votre station de location dans la carte de la ville de Créteil et cliquez dessus</figcaption>
+						</figure>
+						<figure>
+							<img src="images/image2.png" alt="" />
+							<figcaption>Trouvez un vélo disponible en vérifiant les informations de la station sélectionnée</figcaption>
+						</figure>
+						<figure>
+							<img src="images/image3.png" alt="" />
+							<figcaption>Réservez-le en renseignant vos nom et prénom et en cliquant sur le bouton "Réserver"</figcaption>
+						</figure>
+						<figure>
+							<img src="images/image4.png" alt="" />
+							<figcaption>Signez le formulaire dans la petite fenêtre pour valider la réservation</figcaption>
+						</figure>
+						<figure>
+							<img src="images/image5.png" alt="" />
+							<figcaption>Votre réservation est validée et valable 20 minutes </figcaption>
+						</figure>
+						<figure>
+							<img src="images/image6.png" alt=""  />
+							<figcaption>Attention, vous ne pouvez réserver qu'un vélo à la fois</figcaption>
+						</figure>
+					</div>
+				</div>
+				
+				<span id="timeline"></span>
+				
+				<ul class="dots_commands"><!--
+				--><li><a title="Afficher la slide 1" href="#sl_i1">Slide 1</a></li><!--
+				--><li><a title="Afficher la slide 2" href="#sl_i2">Slide 2</a></li><!--
+				--><li><a title="Afficher la slide 3" href="#sl_i3">Slide 3</a></li><!--
+				--><li><a title="Afficher la slide 4" href="#sl_i4">Slide 4</a></li><!--
+				--><li><a title="Afficher la slide 5" href="#sl_i5">Slide 5</a></li><!--
+				--><li><a title="Afficher la slide 6" href="#sl_i6">Slide 6</a></li>
+				</ul>
+				
+				
+			</div>
+
+		</section>
+		
+		<section id="map-section" class="section">
+			<h2 class="w3c">Carte</h2>
+			
+			<div id="map" class="container">
+								
+			</div>
+			<aside id="station-infos-container" class="container">
+				<h2>Nom : <span id="nom-station" class="infos-station"></span></h2>
+				<p>	Adresse : <span id="adresse-station" class="infos-station"></span><br/>
+					<span id="capacité-station" class="infos-station"></span> places totales<br/> <!-- Emplacements vides : <span id="emp-libres-station" class="infos-station"></br> -->
+					<span id="velos-dispos" class="infos-station"></span> vélos disponibles<br/>
+				</p>
+				<form action="fiction.php" method="GET" id="form-resa">
+					<label for="nom-resa">Votre Nom</label><br/>
+					<input type="text" name="user-name" id="nom-resa" placeholder="Entrez votre nom" required/><br/>
+					<label for="prenom-resa">Votre prénom</label><br/>
+					<input type="text" name="user-first-name" id="prenom-resa" placeholder="Entrez votre prénom" required/><br/>
+					<input type="submit" value="Réserver" id="bouton-form-resa" />
+				</form>
+				<span id="message-resa"></span>
+				
+				<div id="canvas-container" class="container">
+					<canvas id="canvasSignature"></canvas><br/>
+					<p>
+					<a href="#form-resa" id="btn-valid-signature">Valider</a> <br/><br/>
+					<a href="#form-resa" id="btn-reset-signature"><i class="fas fa-eraser"></i></a>
+					</p>
+				</div>
+
+			</aside>
+			
+			
+			
+			<div id="confirm-resa">
+				<p id="infos-confirm">Vélo réservé à <span id="station-confirm"></span> par <span id="nom-confirm"></span>. <br/>
+				Temps restant : <span id="temps-restant"></span>.
+			</div>
+			
+			
+			<div id="error-container" class="container">
+				<p id="overbook-error-message">Attention : UNE SEULE réservation simultanée. Si vous poursuivez ceci annulera votre précédente réservation<br/>
+				<a id="btn-override" href="#form-resa">Poursuivre</a></p>
+			</div>
+
+		</section>
+			
+		<footer>
+
+			
+
+				<p>Mentions légales</p>
+				
+				
+			
+		</footer>
+	</body>
+	
+</html>

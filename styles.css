@@ -1,0 +1,152 @@
+/*Styles de la page */
+body {
+	display: flex;
+	flex-direction: column;
+	width : 100%;
+	align-items: center;
+	background: linear-gradient(0.25turn, #3f87a6, #000, #f69d3c);
+	color: white;
+	font-family: 'Titillium Web', sans-serif;
+	font-size: 1.2em;
+}
+
+h1 {
+	font-family: 'Titillium Web', sans-serif;
+	font-weight: bold;
+}
+
+.w3c {
+	display : none;
+}
+
+#cycloc {
+	font-family: 'Sedgwick Ave Display', cursive;
+	font-size: 3em;
+	background-image: url("images/favicon.png");
+	background-size: 120px 120px;
+	background-position: center center;
+	background-repeat: no-repeat;
+}
+
+span {
+	font-weight: bold;
+}
+
+#btn-override, #btn-valid-signature, #btn-reset-signature, #bouton-form-resa {
+    text-align: center;
+    cursor: default;
+    color: black;
+    background-color: lightgrey;
+    box-sizing: border-box;
+    padding: 1px 6px;
+    border-width: 2px;
+    border-style: outset;
+    border-color: grey;
+	border-image: initial;
+	border-radius: 25px;
+	text-decoration: none;
+	height : 2em;
+	margin: 5px;
+	margin-top : 10px;
+}
+
+#station-infos-container {
+	background: linear-gradient(0.25turn, #000, #3f87a6);
+	border-radius: 25px;
+	padding: 2%;
+	width: 35%;
+	position: relative;
+	top: -80%;
+	right: -60%;
+	z-index: 30;
+	display: none;
+	flex-direction: column;
+}
+
+input {
+	border-radius: 25px;
+	padding : 2px;
+}
+
+#map-section {
+	width : 80%;
+	height : 700px;
+}
+
+#map {
+	padding: 2%;
+	height: 600px;
+	z-index : 10;
+	margin-top: 4em;
+	margin-bottom : 10px;
+}
+
+#canvas-container {
+	display : none;
+	width: 250px;
+	margin-top: 2%;
+	position: relative;
+	z-index: 100;
+
+}
+
+canvas {
+	width : 250px;
+	height : 200px;
+	background-color: #FFF;
+	cursor : crosshair;
+	z-index : 100;
+	color : black;
+}
+
+#confirm-resa {
+	display: none;
+	height: 6em;
+	width: 60%;
+	background: linear-gradient(0.25turn, #f69d3c, #000);
+	padding: 2px;
+	padding-left: 1em;
+	border-radius: 25px;
+	position: relative;
+	left: 20%;
+	margin-bottom: 10%;
+}
+
+#error-container {
+	display: none;
+	z-index: 35;
+	background-color: #FFF;
+	color: black;
+	font-size: 1.4em;
+	font-weight: bold;
+	position: absolute;
+	top : 950px;
+	left: 20%;
+	padding: 1px;
+	padding-left: 1em;
+	border: 2px double red;
+	border-radius: 25px;
+}
+footer > p{
+	display: flex;
+	width: 100%;
+	position : relative;
+	top : 400px;
+	margin-bottom: 1em;
+	justify-content: center;
+}
+
+/* MEDIA QUERIES -- MEDIA QUERIES -- MEDIA QUERIES -- MEDIA QUERIES -- MEDIA QUERIES */
+
+@media all and (max-width: 480px)
+{
+	body {
+		min-width : 740px;
+		width : 100%;
+		background-size: 250%;
+	}
+
+	canvas {
+		width : 220px;
+	}
+}
