@@ -9,9 +9,23 @@ body {
 	font-size: 1.2em;
 }
 
+header {
+	display : flex;
+	flex-wrap: wrap;
+}
+
 h1 {
+	display : flex;
+	justify-content: center;
 	font-family: 'Titillium Web', sans-serif;
 	font-weight: bold;
+	width : 100%;
+}
+
+header > p {
+	width : 100%;
+	display: flex;
+	justify-content: center;
 }
 
 .w3c {
@@ -25,6 +39,7 @@ h1 {
 	background-size: 120px 120px;
 	background-position: center center;
 	background-repeat: no-repeat;
+	width : 50%;
 }
 
 span {
