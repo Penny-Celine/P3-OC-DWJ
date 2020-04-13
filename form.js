@@ -1,4 +1,4 @@
-class Forms {
+class Form {
     constructor() {
 
         this.submitBtn = document.getElementById("bouton-form-resa");

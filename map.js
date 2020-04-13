@@ -44,9 +44,7 @@ class Map {
         req.send();
     }
 
-    /**test(response) {
-        console.log(response);
-    }*/
+   
 
     createMarkers(reponse, map){
 

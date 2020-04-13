@@ -2,7 +2,6 @@
 body {
 	display: flex;
 	flex-direction: column;
-	width : 100%;
 	align-items: center;
 	background: linear-gradient(0.25turn, #3f87a6, #000, #f69d3c);
 	color: white;
