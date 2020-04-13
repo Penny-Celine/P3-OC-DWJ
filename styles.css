@@ -39,7 +39,7 @@ header > p {
 	background-size: 120px 120px;
 	background-position: center center;
 	background-repeat: no-repeat;
-	width : 50%;
+	width : 25%;
 }
 
 span {
@@ -158,6 +158,31 @@ footer > p{
 		min-width : 740px;
 		width : 100%;
 		background-size: 250%;
+	}
+
+	header {
+		display : flex;
+		flex-wrap: wrap;
+	}
+	
+	h1 {
+		display : flex;
+		justify-content: center;
+		width : 100%;
+	}
+	
+	header > p {
+		width : 100%;
+		display: flex;
+		justify-content: center;
+	}
+
+	#cycloc {
+		width : 50%;
+	}
+
+	#station-infos-container {
+		width : 40%;
 	}
 
 	canvas {
