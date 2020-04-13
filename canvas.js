@@ -1,7 +1,8 @@
 class Canvas{
 	constructor(element){
 		this.canvas = element;
-		this.ctx = this.canvas.getContext("2d");
+    this.ctx = this.canvas.getContext("2d");
+    this.rect = this.canvas.getBoundingClientRect();
     this.posX = 0;
     this.posY = 0;
     this.isDrawing = false;
@@ -15,6 +16,7 @@ class Canvas{
 	}
 
   getEvent(){
+    
     // On ajoute les gestionnaires d'évènements pour mousedown, mousemove
     // et mouseup
     this.canvas.addEventListener('mousedown', event => {
@@ -48,38 +50,59 @@ class Canvas{
         }
       }
     });
+//    gestion des TouchEvents
 
-
-    this.canvas.addEventListener('touchstart', event => {
-      event.preventDefault();
-      this.posX = event.offsetX - this.canvas.offsetLeft; // Récupère X au click
-      this.posY = event.offsetY - this.canvas.offsetTop; // Récupère Y au click
-      this.isDrawing = true;
-    });
-
-    this.canvas.addEventListener('touchmove', event => {
-      if (this.isDrawing === true) {
-        event.preventDefault();
-        // si mousedown, alors on dessine avec paramètres X et Y de mousedown + X et Y en tps réel quand mousemove
-        this.drawLine(this.posX, this.posY, event.offsetX - this.canvas.offsetLeft , event.offsetY - this.canvas.offsetTop);
-        this.posX = event.offsetX - this.canvas.offsetLeft;
-        this.posY = event.offsetY - this.canvas.offsetTop;
-        this.moves ++;
+    this.canvas.addEventListener('touchstart', touchEvent => {
+      touchEvent.preventDefault();
+      let touches = touchEvent.changedTouches;
+      console.log(touches);
+        
+      for (let i=0; i<touches.length; i++) {
+        ongoingTouches.push(touches[i]);
+        this.ctx.fillStyle = "black";
+        this.ctx.fillRect(touches[i].pageX-2, touches[i].pageY-2, 4, 4);
       }
     });
 
-    window.addEventListener('touchend', event => {
+
+    this.canvas.addEventListener('touchmove', touchEvent => {
       if (this.isDrawing === true) {
-        event.preventDefault();
-        // mouseup = on dessine la dernière position et on arrête
-        this.drawLine(this.posX, this.posY, event.offsetX - this.canvas.offsetLeft, event.offsetY - this.canvas.offsetTop);
-        this.posX = 0;
-        this.posY = 0;
-        this.isDrawing = false;
-        if (this.moves > 3) {
-          this.signature = true;
-        } else {
-          this.signature = false;
+        touchEvent.preventDefault();     
+        let touches = touchEvent.changedTouches;
+  
+        this.ctx.lineWidth = 4;
+              
+        for (let i=0; i<touches.length; i++) {
+          
+          let idx = ongoingTouchIndexById(touches[i].identifier);
+
+          this.ctx.fillStyle = "black";
+          this.ctx.beginPath();
+          this.ctx.moveTo(ongoingTouches[idx].pageX, ongoingTouches[idx].pageY);
+          this.ctx.lineTo(touches[i].pageX, touches[i].pageY);
+          this.ctx.closePath();
+          this.ctx.stroke();
+          ongoingTouches.splice(idx, 1, touches[i]);  // mettre à jour la liste des touchers
+        }
+      }
+    });
+
+    window.addEventListener('touchend', touchEvent => {
+      if (this.isDrawing === true) {
+        touchEvent.preventDefault();
+        let touches = touchEvent.changedTouches;
+  
+        this.ctx.lineWidth = 4;
+              
+        for (let i=0; i<touches.length; i++) {
+          let color = colorForTouch(touches[i]);
+          let idx = ongoingTouchIndexById(touches[i].identifier);
+          
+          ctx.fillStyle = color;
+          ctx.beginPath();
+          ctx.moveTo(ongoingTouches[i].pageX, ongoingTouches[i].pageY);
+          ctx.lineTo(touches[i].pageX, touches[i].pageY);
+          ongoingTouches.splice(i, 1);  // On enlève le point
         }
         
       }
