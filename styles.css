@@ -35,11 +35,13 @@ header > p {
 #cycloc {
 	font-family: 'Sedgwick Ave Display', cursive;
 	font-size: 3em;
+	justify-content : center;
 	background-image: url("images/favicon.png");
 	background-size: 120px 120px;
 	background-position: center center;
 	background-repeat: no-repeat;
-	width : 25%;
+	max-width : 45%;
+	margin-right : 10px;
 }
 
 span {
@@ -178,7 +180,7 @@ footer > p{
 	}
 
 	#cycloc {
-		width : 50%;
+		max-width : 50%;
 	}
 
 	#station-infos-container {
