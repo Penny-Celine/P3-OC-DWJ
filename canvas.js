@@ -8,12 +8,14 @@ class Canvas{
     this.isDrawing = false;
     this.canvas.width = 250;
     this.canvas.height = 200;
+    this.ongoingTouches = [];
     this.moves = 0;
     this.signature = false;
     // RAZ du canvas à chaque rechargement de celui-ci
     this.clearCanvas();
     this.getEvent();
-	}
+  }
+  
 
   getEvent(){
     
@@ -56,9 +58,10 @@ class Canvas{
       touchEvent.preventDefault();
       let touches = touchEvent.changedTouches;
       console.log(touches);
+      this.isDrawing = true;
         
       for (let i=0; i<touches.length; i++) {
-        ongoingTouches.push(touches[i]);
+        this.ongoingTouches.push(touches[i]);
         this.ctx.fillStyle = "black";
         this.ctx.fillRect(touches[i].pageX-2, touches[i].pageY-2, 4, 4);
       }
@@ -66,6 +69,7 @@ class Canvas{
 
 
     this.canvas.addEventListener('touchmove', touchEvent => {
+
       if (this.isDrawing === true) {
         touchEvent.preventDefault();     
         let touches = touchEvent.changedTouches;
@@ -74,15 +78,15 @@ class Canvas{
               
         for (let i=0; i<touches.length; i++) {
           
-          let idx = ongoingTouchIndexById(touches[i].identifier);
+          let idx = this.ongoingTouchIndexById(touches[i].identifier);
 
           this.ctx.fillStyle = "black";
           this.ctx.beginPath();
-          this.ctx.moveTo(ongoingTouches[idx].pageX, ongoingTouches[idx].pageY);
+          this.ctx.moveTo(this.ongoingTouches[idx].pageX, this.ongoingTouches[idx].pageY);
           this.ctx.lineTo(touches[i].pageX, touches[i].pageY);
           this.ctx.closePath();
           this.ctx.stroke();
-          ongoingTouches.splice(idx, 1, touches[i]);  // mettre à jour la liste des touchers
+          this.ongoingTouches.splice(idx, 1, touches[i]);  // mettre à jour la liste des touchers
         }
       }
     });
@@ -91,25 +95,32 @@ class Canvas{
       if (this.isDrawing === true) {
         touchEvent.preventDefault();
         let touches = touchEvent.changedTouches;
-  
+        console.log(touches);
         this.ctx.lineWidth = 4;
               
         for (let i=0; i<touches.length; i++) {
-          let color = colorForTouch(touches[i]);
-          let idx = ongoingTouchIndexById(touches[i].identifier);
+          let idx = this.ongoingTouchIndexById(touches[i].identifier);
           
-          ctx.fillStyle = color;
-          ctx.beginPath();
-          ctx.moveTo(ongoingTouches[i].pageX, ongoingTouches[i].pageY);
-          ctx.lineTo(touches[i].pageX, touches[i].pageY);
-          ongoingTouches.splice(i, 1);  // On enlève le point
+          this.ctx.fillStyle = "black";
+          this.ctx.beginPath();
+          this.ctx.moveTo(this.ongoingTouches[i].pageX, this.ongoingTouches[i].pageY);
+          this.ctx.lineTo(touches[i].pageX, touches[i].pageY);
+          this.ongoingTouches.splice(i, 1);  // On enlève le point
         }
         
       }
     });
 
+  }
 
-
+  ongoingTouchIndexById(idToFind) {
+    for (let i=0; i<this.ongoingTouches.length; i++) {
+      let id = this.ongoingTouches[i].identifier;        
+      if (id == idToFind) {
+        return i;
+      }
+    }
+    return -1;    // not found
   }
 
   drawLine(x1, y1, x2, y2){

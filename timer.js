@@ -5,14 +5,14 @@ class Timer {
         
     }
 
-    countdown(duration) {
+    countdown() {
 
         let start = new Date().getTime();
 
-        let countDownDate = start + duration;
+        let countDownDate = start + this.duration;
         
-            // Update the count down every 1 second
-        this.interval = setInterval(function() {
+         // Update the count down every 1 second
+        const intervalId = setInterval(function() {
 
             let now = new Date().getTime();
 
@@ -31,13 +31,15 @@ class Timer {
             sessionStorage.setItem('secTimer', seconds);
 
             // If the count down is finished, remove booking and write some text
-            if (distance < 0) {
-                clearInterval(this.interval);
+            if (distance <= 0) {
+                window.clearInterval(intervalId);
                 document.getElementById("temps-restant").innerHTML = "RESERVATION EXPIREE";
                 sessionStorage.clear();
-        }
+            }
         }, 1000);
+        this.interval = intervalId;
     }
+
 
     resetTimer() {
         clearInterval(this.interval);

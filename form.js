@@ -21,9 +21,12 @@ class Form {
                     booking.override();
                 } else {
                     validation.preventDefault();
-                    document.getElementById("canvas-container").style.display = "flex";
-
-                    alert("Merci de signer dans la fenêtre ci-dessous");
+                    if (document.getElementById("canvas-container").style.display === "none") {
+                        document.getElementById("canvas-container").style.display = "flex";
+                        alert("Merci de signer dans la fenêtre ci-dessous");
+                    } else {
+                        alert("Vérifiez votre signature et cliquez sur le bouton 'Valider' pour confirmer la réservation.");
+                    }
                 }
             }
         })

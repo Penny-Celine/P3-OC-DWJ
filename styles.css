@@ -27,7 +27,7 @@ header > p {
 	display: flex;
 	justify-content: center;
 }
-
+/* H2 pour chaque section pour W3C à ne pas afficher */
 .w3c {
 	display : none;
 }
@@ -187,7 +187,5 @@ footer > p{
 		width : 40%;
 	}
 
-	canvas {
-		width : 220px;
-	}
+
 }

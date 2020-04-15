@@ -23,8 +23,8 @@ class Map {
     }
 
     /**
-     * Exécute un appel AJAX GET
-     * Prend en paramètres l'URL cible et la fonction callback appelée en cas de succès
+     * Exécute un appel AJAX
+     * Prend en paramètres GET (méthode), l'URL cible et la fonction callback appelée en cas de succès
     */
     getDataFromApi(method, url, callback) {
         let map = this.mymap;

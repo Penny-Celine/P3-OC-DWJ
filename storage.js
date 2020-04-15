@@ -5,9 +5,7 @@ class Storage {
         this.bikerName = document.getElementById("nom-confirm");
         this.timer = document.getElementById("temps-restant");
         this.checkSessionStorage();
-        console.log('Vérification de sessionStorage');
         this.checkLocalStorage();
-        console.log('Vérification de LocalStorage');
     }
 
     checkSessionStorage() {
@@ -27,12 +25,10 @@ class Storage {
 
                 container.style.display = "block";
                 container.style.top = 0;
-                console.log('réservation stockée détectée');
-            } else {
-                console.log('aucune réservation trouvée');
-            }
+                
+            } 
         } else {
-            console.log('problème de stockage dans la session');
+            alert('problème de stockage dans la session');
         }
     }
 
@@ -47,7 +43,7 @@ class Storage {
                 formFirstName.value = localFirstName;
             }
         } else {
-            console.log('problème de stockage dans le local');
+            alert('problème de stockage dans le local');
         }
     }
 

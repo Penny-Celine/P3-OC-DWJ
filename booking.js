@@ -26,11 +26,9 @@ class Booking {
         this.btnValidation.addEventListener("click", clickBtn => {
             let signOk = this.canvas.signature ;
             clickBtn.preventDefault();
-            console.log(signOk);
             if (signOk === true ) {
                 //Ici la réservation est validée, on lance le stockage d'infos de resa
                 this.recordBook();
-                console.log('Réservation valide');
                 this.currentBooking = true;
                 document.getElementById("station-infos-container").style.display = "none";
                 document.getElementById("confirm-resa").style.top = 0;
@@ -64,7 +62,7 @@ class Booking {
                 sessionStorage.setItem('firstName', firstNameToStore);
                 sessionStorage.setItem('stationName', stationNameToStore);
                 sessionStorage.setItem('stationAddress', stationAddressToStore);
-                this.timer.countdown(1200000);
+                this.timer.countdown();
                 document.getElementById('confirm-resa').style.display = "block";
                 document.getElementById('station-confirm').innerHTML = this.stationName.innerText + " " + this.stationAddress.innerText;
                 document.getElementById('nom-confirm').innerHTML = firstNameToStore + " " + nameToStore ;

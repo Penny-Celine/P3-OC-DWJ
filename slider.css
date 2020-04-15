@@ -378,7 +378,7 @@ figure[id^="sl"] > figcaption {
 	outline: none;
 	background: orange;
 }
-/* petits points que j'essaie de garder oranges quand on est sur la slide correspondante...*/
+/* petits points */
 .dots_commands a:hover, .dots_commands a:active {
 	background-color: orange;
 }
