@@ -2,13 +2,12 @@ class Canvas{
 	constructor(element){
 		this.canvas = element;
     this.ctx = this.canvas.getContext("2d");
-    this.rect = this.canvas.getBoundingClientRect();
+    
     this.posX = 0;
     this.posY = 0;
     this.isDrawing = false;
     this.canvas.width = 250;
     this.canvas.height = 200;
-    this.ongoingTouches = [];
     this.moves = 0;
     this.signature = false;
     // RAZ du canvas à chaque rechargement de celui-ci
@@ -44,7 +43,6 @@ class Canvas{
         this.posX = 0;
         this.posY = 0;
         this.isDrawing = false;
-        console.log(this.posX);
         if (this.moves > 3) {
           this.signature = true;
         } else {
@@ -54,73 +52,39 @@ class Canvas{
     });
 //    gestion des TouchEvents
 
+
     this.canvas.addEventListener('touchstart', touchEvent => {
-      touchEvent.preventDefault();
-      let touches = touchEvent.changedTouches;
-      console.log(touches);
-      this.isDrawing = true;
-        
-      for (let i=0; i<touches.length; i++) {
-        this.ongoingTouches.push(touches[i]);
-        this.ctx.fillStyle = "black";
-        this.ctx.fillRect(touches[i].pageX-2, touches[i].pageY-2, 4, 4);
-      }
+      let touch = touchEvent.touches;
+      let mouseEvent = new MouseEvent("mousedown", {
+        clientX: touch.clientX,
+        clientY: touch.clientY
+      });
+      this.canvas.dispatchEvent(mouseEvent);
     });
 
 
     this.canvas.addEventListener('touchmove', touchEvent => {
-
       if (this.isDrawing === true) {
         touchEvent.preventDefault();     
-        let touches = touchEvent.changedTouches;
-  
-        this.ctx.lineWidth = 4;
-              
-        for (let i=0; i<touches.length; i++) {
-          
-          let idx = this.ongoingTouchIndexById(touches[i].identifier);
-
-          this.ctx.fillStyle = "black";
-          this.ctx.beginPath();
-          this.ctx.moveTo(this.ongoingTouches[idx].pageX, this.ongoingTouches[idx].pageY);
-          this.ctx.lineTo(touches[i].pageX, touches[i].pageY);
-          this.ctx.closePath();
-          this.ctx.stroke();
-          this.ongoingTouches.splice(idx, 1, touches[i]);  // mettre à jour la liste des touchers
-        }
+        let touch = touchEvent.touches;
+        let mouseEvent = new MouseEvent("mousemove", {
+          clientX: touch.clientX,
+          clientY: touch.clientY
+      });
+      this.canvas.dispatchEvent(mouseEvent);
       }
     });
 
     window.addEventListener('touchend', touchEvent => {
       if (this.isDrawing === true) {
-        touchEvent.preventDefault();
-        let touches = touchEvent.changedTouches;
-        console.log(touches);
-        this.ctx.lineWidth = 4;
-              
-        for (let i=0; i<touches.length; i++) {
-          let idx = this.ongoingTouchIndexById(touches[i].identifier);
-          
-          this.ctx.fillStyle = "black";
-          this.ctx.beginPath();
-          this.ctx.moveTo(this.ongoingTouches[i].pageX, this.ongoingTouches[i].pageY);
-          this.ctx.lineTo(touches[i].pageX, touches[i].pageY);
-          this.ongoingTouches.splice(i, 1);  // On enlève le point
-        }
-        
+        let touch = touchEvent.touches;
+        let mouseEvent = new MouseEvent("mouseup", {
+          clientX: touch.clientX,
+          clientY: touch.clientY
+        });
+        this.canvas.dispatchEvent(mouseEvent);
       }
     });
-
-  }
-
-  ongoingTouchIndexById(idToFind) {
-    for (let i=0; i<this.ongoingTouches.length; i++) {
-      let id = this.ongoingTouches[i].identifier;        
-      if (id == idToFind) {
-        return i;
-      }
-    }
-    return -1;    // not found
   }
 
   drawLine(x1, y1, x2, y2){
@@ -136,7 +100,6 @@ class Canvas{
   clearCanvas() {
     this.ctx.clearRect(0, 0, 250, 200);
     this.signature = false;
-    console.log("clear canvas");
   }
 
   
