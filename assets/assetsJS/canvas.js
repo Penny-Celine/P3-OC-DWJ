@@ -56,8 +56,8 @@ class Canvas{
     this.canvas.addEventListener('touchstart', touchEvent => {
       let touch = touchEvent.touches;
       let mouseEvent = new MouseEvent("mousedown", {
-        x: touch.clientX - this.rect.left,
-        y: touch.clientY - this.rect.top
+        offsetX: touch.clientX - this.rect.left,
+        offsetY: touch.clientY - this.rect.top
       });
       this.canvas.dispatchEvent(mouseEvent);
     });

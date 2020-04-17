@@ -103,7 +103,7 @@ input {
 	width: 250px;
 	margin-top: 2%;
 	position: relative;
-	z-index: 99;
+	z-index: 100;
 
 }
 
@@ -157,10 +157,12 @@ footer > p{
 
 @media all and (max-width: 480px)
 {
+
+
+
 	body {
-		min-width : 740px;
-		width : 100%;
-		background-size: 250%;
+		min-width : 320px;
+		font-size: smaller;
 	}
 
 	header {
@@ -185,7 +187,16 @@ footer > p{
 	}
 
 	#station-infos-container {
-		width : 40%;
+		background: linear-gradient(0.25turn, #000, #3f87a6);
+		border-radius: 25px;
+		padding: 2%;
+		width: 100%;
+		position: relative;
+		top: 0;
+		left: 0;
+		z-index: 30;
+		display: none;
+		flex-direction: column;
 	}
 
 

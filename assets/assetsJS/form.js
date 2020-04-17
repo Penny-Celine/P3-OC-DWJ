@@ -21,7 +21,6 @@ class Form {
                     booking.override();
                 } else {
                     validation.preventDefault();
-                    console.log(document.getElementById("canvas-container").style.display);
                     if (document.getElementById("canvas-container").style.display === "") {
                         alert("Merci de signer dans la fenêtre ci-dessous");
                         document.getElementById("canvas-container").style.display = "flex";
