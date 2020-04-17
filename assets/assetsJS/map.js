@@ -71,8 +71,8 @@ class Map {
                 let confirmBookingContainer = document.getElementById("confirm-resa");
                 document.getElementById("station-infos-container").style.display = "flex";
                 confirmBookingContainer.style.top = "-70%";
-                if (confirmBookingContainer.style.display != "none") {
-                    document.getElementById("canvas-container").style.display = "block";
+                if (sessionStorage.getItem('stationName')) {
+                    document.getElementById("canvas-container").style.display = "flex";
                 }
 
                 if (station.status == "OPEN") {

@@ -99,6 +99,7 @@ input {
 
 #canvas-container {
 	display : none;
+	flex-wrap: wrap;
 	width: 250px;
 	margin-top: 2%;
 	position: relative;
@@ -117,7 +118,7 @@ canvas {
 
 #confirm-resa {
 	display: none;
-	height: 6em;
+	min-height: 6em;
 	width: 60%;
 	background: linear-gradient(0.25turn, #f69d3c, #000);
 	padding: 2px;

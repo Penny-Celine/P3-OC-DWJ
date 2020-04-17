@@ -5,6 +5,8 @@ class Canvas{
     this.posX = 0;
     this.posY = 0;
     this.isDrawing = false;
+    this.canvas.width = 250;
+    this.canvas.height = 200;
     this.rect = this.canvas.getBoundingClientRect();
     this.moves = 0;
     this.signature = false;
@@ -54,8 +56,8 @@ class Canvas{
     this.canvas.addEventListener('touchstart', touchEvent => {
       let touch = touchEvent.touches;
       let mouseEvent = new MouseEvent("mousedown", {
-        offsetX: touch.offsetX,
-        offsetY: touch.offsetY
+        x: touch.clientX - this.rect.left,
+        y: touch.clientY - this.rect.top
       });
       this.canvas.dispatchEvent(mouseEvent);
     });
@@ -66,8 +68,8 @@ class Canvas{
         touchEvent.preventDefault();     
         let touch = touchEvent.touches;
         let mouseEvent = new MouseEvent("mousemove", {
-          offsetX: touch.offsetX,
-          offsetY: touch.offsetY
+          x: touch.clientX - this.rect.left,
+          y: touch.clientY - this.rect.top
       });
       this.canvas.dispatchEvent(mouseEvent);
       }
@@ -77,8 +79,8 @@ class Canvas{
       if (this.isDrawing === true) {
         let touch = touchEvent.touches;
         let mouseEvent = new MouseEvent("mouseup", {
-          offsetX: touch.offsetX,
-          offsetY: touch.offsetY
+          x: touch.clientX - this.rect.left,
+          y: touch.clientY - this.rect.top 
         });
         this.canvas.dispatchEvent(mouseEvent);
       }
