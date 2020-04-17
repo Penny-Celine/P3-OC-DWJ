@@ -2,12 +2,10 @@ class Canvas{
 	constructor(element){
 		this.canvas = element;
     this.ctx = this.canvas.getContext("2d");
-    
     this.posX = 0;
     this.posY = 0;
     this.isDrawing = false;
-    this.canvas.width = 250;
-    this.canvas.height = 200;
+    this.rect = this.canvas.getBoundingClientRect();
     this.moves = 0;
     this.signature = false;
     // RAZ du canvas à chaque rechargement de celui-ci
@@ -56,8 +54,8 @@ class Canvas{
     this.canvas.addEventListener('touchstart', touchEvent => {
       let touch = touchEvent.touches;
       let mouseEvent = new MouseEvent("mousedown", {
-        clientX: touch.clientX,
-        clientY: touch.clientY
+        offsetX: touch.offsetX,
+        offsetY: touch.offsetY
       });
       this.canvas.dispatchEvent(mouseEvent);
     });
@@ -68,8 +66,8 @@ class Canvas{
         touchEvent.preventDefault();     
         let touch = touchEvent.touches;
         let mouseEvent = new MouseEvent("mousemove", {
-          clientX: touch.clientX,
-          clientY: touch.clientY
+          offsetX: touch.offsetX,
+          offsetY: touch.offsetY
       });
       this.canvas.dispatchEvent(mouseEvent);
       }
@@ -79,8 +77,8 @@ class Canvas{
       if (this.isDrawing === true) {
         let touch = touchEvent.touches;
         let mouseEvent = new MouseEvent("mouseup", {
-          clientX: touch.clientX,
-          clientY: touch.clientY
+          offsetX: touch.offsetX,
+          offsetY: touch.offsetY
         });
         this.canvas.dispatchEvent(mouseEvent);
       }

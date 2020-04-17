@@ -102,7 +102,7 @@ input {
 	width: 250px;
 	margin-top: 2%;
 	position: relative;
-	z-index: 100;
+	z-index: 99;
 
 }
 
