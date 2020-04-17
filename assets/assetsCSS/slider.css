@@ -392,14 +392,14 @@ figure[id^="sl"] > figcaption {
 {
 
 	img {
-		width : 278px;
-		height : 135px;
+		width : 256px;
+		height : 124px;
 	}
 
 	#slideshow {
 		position: relative;
-		width: 278px;
-		height: 135px;
+		width: 256px;
+		height: 124px;
 		padding: 7px;
 	}
 
@@ -413,8 +413,8 @@ figure[id^="sl"] > figcaption {
 
 	#slideshow .container {
 		position:relative;
-		width: 278px;
-		height: 135px;
+		width: 256px;
+		height: 124px;
 		overflow: hidden;
 	}
 
@@ -422,7 +422,7 @@ figure[id^="sl"] > figcaption {
 		position: absolute;
 		left:0; top:0;
 		width: 600%;
-		height: 135px;
+		height: 124px;
 		display: flex;
 		flex-wrap: nowrap;
 	}
@@ -437,16 +437,16 @@ figure[id^="sl"] > figcaption {
 	
 	@keyframes timelinerS {
 		0%, 16%, 32%, 50%, 66%, 82%, 100%	{ width: 0;		}
-		12%, 28%, 44%, 61%, 78%, 96%		{ width: 278px;	}
+		12%, 28%, 44%, 61%, 78%, 96%		{ width: 256px;	}
 	}
 
 	figure[id^="sl"] {
 		position: absolute;
-		top: 45%;
+		top: 31%;
 		margin: auto;
 		z-index: 20;
-		width: 278px;
-		height: 135px;
+		width: 256px;
+		height: 124px;
 		padding: 7px;
 		margin: 0 auto 1em;
 		border: 1px solid #ddd;

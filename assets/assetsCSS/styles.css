@@ -66,6 +66,11 @@ span {
 	margin-top : 10px;
 }
 
+#eraser {
+	height : 22px;
+	width : 22px;
+}
+
 #station-infos-container {
 	background: linear-gradient(0.25turn, #000, #3f87a6);
 	border-radius: 25px;
@@ -144,12 +149,19 @@ canvas {
 	border: 2px double red;
 	border-radius: 25px;
 }
-footer > p{
+footer {
 	display: flex;
+	flex-wrap: wrap;
 	width: 100%;
 	position : relative;
 	top : 400px;
 	margin-bottom: 1em;
+	justify-content: center;
+}
+
+footer > p {
+	width : 100%;
+	display : flex;
 	justify-content: center;
 }
 
@@ -166,18 +178,29 @@ footer > p{
 	}
 
 	header {
+		width : 95%;
 		display : flex;
 		flex-wrap: wrap;
+		justify-content: center;
+		align-items: center;
 	}
 	
+
+	#cycloc {
+		font-size: 2em;
+		padding-top: 7%;
+		background-size: 50px 50px;
+	}
+
 	h1 {
 		display : flex;
+		font-size : 1.3em;
 		justify-content: center;
 		width : 100%;
 	}
 	
 	header > p {
-		width : 100%;
+		width : 85%;
 		display: flex;
 		justify-content: center;
 	}
