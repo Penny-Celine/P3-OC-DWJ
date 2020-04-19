@@ -21,7 +21,7 @@ class Storage {
                 timer.innerHTML = sessionStorage.getItem('minTimer') + " minutes et " + sessionStorage.getItem('secTimer') + " secondes";
                 let remainTime = (sessionStorage.minTimer * 60 * 1000) + (sessionStorage.secTimer * 1000);
                 let refreshTimer = new Timer(remainTime);
-                refreshTimer.countdown(remainTime);
+                refreshTimer.countdown();
 
                 container.style.display = "block";
                 container.style.top = 0;

@@ -48,7 +48,7 @@ span {
 	font-weight: bold;
 }
 
-#btn-override, #btn-valid-signature, #btn-reset-signature, #bouton-form-resa {
+#btn-override, #btn-revenir, #btn-valid-signature, #btn-reset-signature, #bouton-form-resa {
     text-align: center;
     cursor: default;
     color: black;

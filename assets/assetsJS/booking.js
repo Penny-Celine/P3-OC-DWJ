@@ -6,6 +6,7 @@ class Booking {
         this.btnReset = document.getElementById("btn-reset-signature");
         this.errorContainer = document.getElementById("error-container");
         this.overrideBtn = document.getElementById("btn-override");
+        this.returnBtn = document.getElementById("btn-revenir");
         this.stationName = document.getElementById("nom-station");
         this.stationAddress = document.getElementById("adresse-station");
         this.timer = new Timer(1200000);;
@@ -83,6 +84,14 @@ class Booking {
             sessionStorage.clear();
             this.timer.resetTimer();
             this.currentBooking = false;
+        })
+
+        this.returnBtn.addEventListener("click", clickBtn => {
+            clickBtn.preventDefault();
+            this.errorContainer.style.display = "none";
+            confirmContainer.style.display = "flex";
+            confirmContainer.style.top = "-70%";
+            stationInfoContainer.style.display = "flex";
         })
     }
 
